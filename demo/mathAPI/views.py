@@ -3,6 +3,7 @@ from .serializers import MathHistorySerializer
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+
 class MathAPIViewSet(viewsets.ModelViewSet):
     queryset = MathHistory.objects.all()
     serializer_class = MathHistorySerializer
@@ -12,10 +13,16 @@ class MathAPIViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'])
     def do_sum(self, request, pk=None):
-        #b = request.data['arg1']+request.data['operator']+request.data['arg2']
-        a = eval(request.data["sum"])
-        serializer = MathHistorySerializer(data={"sum":request.data["sum"],"result" : a})
+        #Hier mist het verwerken van de data!
+        #
+        #
+        #
+        #
+        #
+        #
+        serializer = MathHistorySerializer(data={"sum": # Hier mist de som voor de DB ,"result" : # Hier mist het resultaat})
+        #Dit slaat je data op in de DB 
         if serializer.is_valid():
             serializer.save()
-        return Response({'answer': a})
+        return Response({'answer': # Hier mist het resultaat })
 
